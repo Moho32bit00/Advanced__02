@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Advanced__02
 {
-    public delegate bool filter<T>( T value);
-    public static  class ProtuctHelper<T>
+    public delegate bool filter<T>(T value);
+    public static class ProtuctHelper<T>
     {
-        public static List<T> SearchProducts(List<T> listofPro , filter <T> f)
+        public static List<T> SearchProducts(List<T> listofPro, filter<T> f)
         {
-            List <T> result = new List<T>();
+            List<T> result = new List<T>();
             foreach (T product in listofPro)
             {
                 if (f(product))
@@ -19,7 +19,15 @@ namespace Advanced__02
             }
             return result;
         }
+        public static void printa(List<Product> list,Action <Product> ActionPrint )
+        {
+            foreach (Product l in list)
+            {
+                ActionPrint(l);
+            }
+        }
     }
+
     public static class FilterHelper
     {
         public static bool Cheaper_50(Product p)
@@ -40,4 +48,6 @@ namespace Advanced__02
             return p.Category == "Electronics";
         }
     }
+
+
 }

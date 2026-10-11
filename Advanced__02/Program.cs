@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System.Collections;
+using System.Net;
+using System.Xml.Linq;
 
 namespace Advanced__02
 {
@@ -21,6 +23,8 @@ namespace Advanced__02
             new Product { Id = 9, Name = "Headphones", Category = "Electronics", Price = 150 , Stock = 6}
 
             };
+
+            #region Task 01 : Smart Product Search
             Console.WriteLine("--- Uder 50$ ---");
             filter<Product> f = FilterHelper.Cheaper_50;
             List <Product> result = ProtuctHelper<Product>.SearchProducts(catalog, f);
@@ -35,6 +39,24 @@ namespace Advanced__02
             {
                 Console.WriteLine(p);
             }
+            #endregion
+
+            #region task3 -1 
+            Console.WriteLine();
+            Console.WriteLine("--- Short Report ---");
+            Action<Product> a1 = product => Console.WriteLine($"->Name: {product.Name} | Price: {product.Price}");
+            ProtuctHelper<Product>.printa(catalog, a1);
+            Console.WriteLine();
+            Console.WriteLine("--- Detailed Report ---");
+            Action<Product> a2 = product => Console.WriteLine($"->Name: {product.Name} | Category: {product.Category} | Price: {product.Price} | Stock: {product.Stock}");
+            ProtuctHelper<Product>.printa(catalog, a2);
+            Console.WriteLine();
+            #endregion 
+
+
+
+
+
         }
     }
 }
