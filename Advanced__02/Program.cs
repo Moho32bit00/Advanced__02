@@ -28,16 +28,16 @@ namespace Advanced__02
             Console.WriteLine("--- Uder 50$ ---");
             filter<Product> f = FilterHelper.Cheaper_50;
             List <Product> result = ProtuctHelper<Product>.SearchProducts(catalog, f);
-            foreach (Product p in result)
+            foreach (Product c in result)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(c);
             }
             Console.WriteLine("--- All Elctro ---");
             f = FilterHelper.All_elctro;
             result = ProtuctHelper<Product>.SearchProducts(catalog, f);
-            foreach (Product p in result)
+            foreach (Product e in result)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(e);
             }
             #endregion
 
@@ -57,9 +57,9 @@ namespace Advanced__02
             Console.WriteLine("--- Summary List ---");
             Func<Product , string > f1 = product => $"{product.Name} (${product.Price})";
             List<string> l = ProtuctHelper<Product>.TransformProducts(catalog, f1);
-            foreach (String p in l)
+            foreach (String d in l)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(d);
             }
             Console.WriteLine();
             Console.WriteLine("--- Price Label ---");
@@ -73,14 +73,25 @@ namespace Advanced__02
             };
              l = ProtuctHelper<Product>.TransformProducts(catalog, f1);
             Console.WriteLine();
-            foreach (String p in l)
+            foreach (String a in l)
             {
-                Console.WriteLine(p);
+                Console.WriteLine(a);
             }
-            #endregion 
+            #endregion
+            #region 3.3. Filter Products
+            Console.WriteLine();
+            Console.WriteLine("--- Low-Stock Alert ---");
 
+            Predicate<Product> p = product => product.Stock < 20;
 
+            List<string> stock = ProtuctHelper<Product>.FilterProducts(catalog, p);
 
+            foreach (string o in stock)
+            {
+                Console.WriteLine(o);
+            }
+            Console.WriteLine();
+            #endregion
         }
     }
 }

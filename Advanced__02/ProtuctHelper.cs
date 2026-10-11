@@ -36,6 +36,20 @@ namespace Advanced__02
             return result;
         
         }
+
+
+        public static List<string> FilterProducts (List<Product> listofPro , Predicate<Product> f)
+        {
+            List<string> result = new List<string>();
+            foreach (Product l in listofPro)
+            {
+                if (f(l))
+                {
+                    result.Add($"[Low Stock] {l.Name}: Only {l.Stock} Left");
+                }
+            }
+            return result;
+        }
     }
 
     public static class FilterHelper
