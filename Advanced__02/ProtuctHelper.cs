@@ -26,6 +26,16 @@ namespace Advanced__02
                 ActionPrint(l);
             }
         }
+
+        public static List<string> TransformProducts(List<Product> listofPro , Func <Product , string > f) {
+            List <string> result = new List<string>(); 
+            foreach (Product l in listofPro)
+            {
+               result.Add(f(l));
+            }
+            return result;
+        
+        }
     }
 
     public static class FilterHelper

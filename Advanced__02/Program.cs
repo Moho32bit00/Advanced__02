@@ -51,9 +51,33 @@ namespace Advanced__02
             Action<Product> a2 = product => Console.WriteLine($"->Name: {product.Name} | Category: {product.Category} | Price: {product.Price} | Stock: {product.Stock}");
             ProtuctHelper<Product>.printa(catalog, a2);
             Console.WriteLine();
+            #endregion
+
+            #region task3-2 
+            Console.WriteLine("--- Summary List ---");
+            Func<Product , string > f1 = product => $"{product.Name} (${product.Price})";
+            List<string> l = ProtuctHelper<Product>.TransformProducts(catalog, f1);
+            foreach (String p in l)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine();
+            Console.WriteLine("--- Price Label ---");
+            f1 = delegate (Product product)
+            {
+                if (product.Price > 100)
+                {
+                    return $"{product.Name} : Expensive!";
+                }
+                return $"{product.Name} : Adorable!";
+            };
+             l = ProtuctHelper<Product>.TransformProducts(catalog, f1);
+            Console.WriteLine();
+            foreach (String p in l)
+            {
+                Console.WriteLine(p);
+            }
             #endregion 
-
-
 
 
 
