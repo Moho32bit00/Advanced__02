@@ -1,4 +1,6 @@
-﻿namespace Advanced__02
+﻿using System.Net;
+
+namespace Advanced__02
 {
     internal class Program
     {
@@ -16,9 +18,23 @@
             new Product { Id = 6, Name = "Coffee Beans", Category = "Food", Price = 15, Stock = 80 },
             new Product { Id = 7, Name = "C# Book", Category = "Books", Price = 45, Stock = 30 },
             new Product { Id = 8, Name = "Novel", Category = "Books", Price = 20, Stock = 60 },
-            new Product { Id = 9, Name = "Headphones", Category = "Electronics", Price = 150 }
+            new Product { Id = 9, Name = "Headphones", Category = "Electronics", Price = 150 , Stock = 6}
 
             };
+            Console.WriteLine("--- Uder 50$ ---");
+            filter<Product> f = FilterHelper.Cheaper_50;
+            List <Product> result = ProtuctHelper<Product>.SearchProducts(catalog, f);
+            foreach (Product p in result)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("--- All Elctro ---");
+            f = FilterHelper.All_elctro;
+            result = ProtuctHelper<Product>.SearchProducts(catalog, f);
+            foreach (Product p in result)
+            {
+                Console.WriteLine(p);
+            }
         }
     }
 }
